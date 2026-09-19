@@ -1,7 +1,7 @@
 #ifndef WAITINGLIST_H
 #define WAITINGLIST_H
 
-#indlude <string>
+#include <string>
 #include <iostream>
 
 struct WaitingNode {
@@ -12,7 +12,7 @@ struct WaitingNode {
 
   WaitingNode(const std::string& sid, const std::string& sname,
               const std::string& rid)
-    : studentID(sid), studentName(sname), resourceID9rid), next(nullptr) {}
+    : studentID(sid), studentName(sname), resourceID(rid), next(nullptr) {}
 };
 
 class WaitingList {
@@ -23,7 +23,7 @@ public:
   WaitingList();
   bool isEmpty() const;
   void enqueue(const std::string& studentID,
-              const std::string& studentName;
+              const std::string& studentName,
               const std::string& resourceID);
   void dequeue();
   WaitingNode* peek() const;
