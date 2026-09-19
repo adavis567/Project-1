@@ -5,12 +5,12 @@
 #include <iostream>
 
 
-class Rescource {
+class Resource {
 private:
   std::string resourceID;
   std::string resourceName;
   std::string resourceType;
-  bool isAvailabe;
+  bool isAvailable;
 public:
   Resource();
   Resource(const std::string& id, const std::string& name,
@@ -19,7 +19,7 @@ public:
   std::string getID() const;
   std::string getName() const;
   std::string getType() const;
-  bool getAvailablility() const;
+  bool getAvailability() const;
 
   void setAvailability(bool status);
   void display() const;
