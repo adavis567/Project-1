@@ -35,10 +35,11 @@ void WaitingList::dequeue() {
 void WaitingList::display() const {
   if (isEmpty()) {
       std::cout << "Waiting list is empty." << std::endl;
+      return;
   }
 
   WaitingNode* curr = front;
-  while (curr !- nullptr) {
+  while (curr != nullptr) {
     std::cout << curr->studentID << " | "
               << curr->studentName << " | "
               << curr->resourceID << std::endl;
