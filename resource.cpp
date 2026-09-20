@@ -1,4 +1,4 @@
-#include "Resource.h"
+#include "resource.h"
 
 Resource::Resource()
   : resourceID(""), resourceName(""), resourceType(""), isAvailable(true) {}

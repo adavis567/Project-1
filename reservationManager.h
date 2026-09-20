@@ -1,7 +1,7 @@
 #ifndef RESERVATIONMANAGER_H
 #define RESERVATIONMANAGER_H
 
-#include "Reservation.h"
+#include "reservation.h"
 #include <string>
 using namespace std;
 

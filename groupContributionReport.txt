@@ -1,1 +1,97 @@
+Group Contribution Report
 
+Project: Campus Resource Reservation System
+
+
+Anthony Davis
+
+Component:
+Reservation Management and Linked List Implementation
+
+Specific Work:
+- Developed the Reservation class.
+- Implemented reservation data fields including reservation ID,
+  student ID, student name, resource ID, and reservation date.
+- Implemented reservation getters and setters.
+- Implemented reservation display functionality.
+- Developed the ReservationManager class.
+- Implemented the linked list used to store active reservations.
+- Implemented reservation insertion.
+- Implemented reservation removal.
+- Implemented reservation searching.
+- Implemented duplicate reservation ID checking.
+- Implemented active reservation display.
+- Implemented reservation count tracking.
+- Integrated reservation management with the main program.
+- Tested reservation creation, searching, removal, duplicate IDs,
+  and displaying active reservations.
+
+
+Caleb Harper
+
+Component:
+Resource Management and Waiting List Management
+
+Specific Work:
+- Developed the Resource class.
+- Implemented resource IDs, names, types, and availability status.
+- Implemented resource display and availability updates.
+- Implemented resource inventory loading from resources.txt.
+- Developed the WaitingList queue.
+- Implemented FIFO enqueue and dequeue operations.
+- Implemented the waiting-list front/peek operation.
+- Implemented waiting-list display.
+- Implemented automatic assignment of resources to students on the
+  waiting list.
+- Tested resource loading, resource availability, waiting-list
+  insertion, and waiting-list processing.
+
+
+Eyob Tesfay
+
+Component:
+Cancellation History and Complexity Analysis
+
+Specific Work:
+- Developed the CancellationHistory class.
+- Implemented the cancellation history stack.
+- Implemented adding cancelled reservations to the stack.
+- Implemented undoing the most recent cancellation.
+- Implemented cancellation history display.
+- Documented the time complexity of the major data structures
+  and operations.
+- Tested cancellation, cancellation history, and undo functionality.
+
+
+Testing and Debugging
+
+The group tested the program for:
+
+- Displaying resources from the input file.
+- Creating valid reservations.
+- Preventing duplicate reservation IDs.
+- Detecting invalid resource IDs.
+- Changing resources from available to unavailable after reservation.
+- Adding students to the waiting list when a resource is unavailable.
+- Cancelling active reservations.
+- Returning resources to available status after cancellation.
+- Automatically assigning an available resource to the next student
+  in the waiting list.
+- Displaying active reservations.
+- Displaying the waiting list.
+- Displaying cancellation history.
+- Undoing the most recent cancellation.
+- Handling invalid menu choices.
+- Handling invalid numeric input.
+- Handling an unavailable resources input file.
+
+
+GitHub Contributions
+
+The group uses GitHub for version control and collaboration.
+
+Each member works on their assigned project components and contributes
+changes through GitHub branches and commits.
+
+The group will merge feature branches into the main branch and test the
+integrated project before submission.

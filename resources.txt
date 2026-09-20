@@ -1,1 +1,4 @@
-
+R001 | Study Room 1 | Study Room | 1
+R002 | Study Room 2 | Study Room | 1
+R003 | Laptop 1 | Laptop | 1
+R004 | Calculator 1 | Calculator | 1

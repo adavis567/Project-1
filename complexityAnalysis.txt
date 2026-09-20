@@ -4,10 +4,10 @@ Reservation Insertion
 Big-O: O(n)
 
 The reservation list uses a linked list. Before inserting a reservation,
-the program checks if the reservation already exists, which may require
-traversing the list. The program may also traverse to the end of the list
-before adding the new reservation. Because the list may need to be
-traversed, the worst-case complexity is O(n).
+the program checks if the reservation ID already exists, which may require
+traversing the list. The program then traverses to the end of the list
+before adding the new reservation. Therefore, the worst-case complexity
+is O(n).
 
 
 Reservation Removal
@@ -15,24 +15,83 @@ Big-O: O(n)
 
 To remove a reservation, the program may need to search through the linked
 list to find the matching reservation ID. In the worst case, the program
-may check every reservation before finding it. Removing the node itself
-is constant time once it is found, so the overall worst-case complexity is
-O(n).
+may check every reservation before finding it. Removing the node itself is
+O(1) once the node is found, so the overall worst-case complexity is O(n).
 
 
-Waiting-List Processing
-Big-O: O(1) per enqueue/dequeue
+Reservation Search
+Big-O: O(n)
 
-The waiting list uses a queue with front and rear pointers. Adding a
-student to the waiting list updates the rear pointer, and removing the
-next student updates the front pointer. Since no full-list traversal is
-needed for these operations, each enqueue or dequeue operation is O(1).
+The reservation linked list is searched from the head until a matching
+reservation ID is found. In the worst case, every reservation must be
+checked, resulting in O(n) time.
+
+
+Waiting-List Enqueue
+Big-O: O(1)
+
+The waiting list uses a linked queue with front and rear pointers. A new
+student is added directly to the rear of the queue without traversing the
+list. Therefore, enqueue is O(1).
+
+
+Waiting-List Dequeue
+Big-O: O(1)
+
+The next student is removed directly from the front of the queue. No
+traversal is required, so dequeue is O(1).
+
+
+Waiting-List Peek
+Big-O: O(1)
+
+The front pointer directly identifies the first student in the waiting
+list. Therefore, retrieving the next waiting student is O(1).
+
+
+Cancellation History
+Big-O: O(1)
+
+Cancellation history uses a stack. Adding a cancellation places the
+reservation directly on top of the stack, so the push operation is O(1).
 
 
 Undo Cancellation
-Big-O: O(1) for the stack operation
+Big-O: O(1)
 
-Cancellation history is stored in a stack, so the most recently cancelled
-reservation is always at the top. The program can retrieve and remove the
-top reservation directly without searching through the other cancelled
-reservations. Therefore, the stack undo operation is O(1).
+The most recently cancelled reservation is stored at the top of the
+cancellation stack. Retrieving and removing it requires only one stack
+operation, so undo cancellation is O(1).
+
+
+Resource Search
+Big-O: O(n)
+
+Resources are stored in a vector. When searching for a resource by its ID,
+the program may need to examine every resource. Therefore, the worst-case
+search complexity is O(n).
+
+
+Resource Display
+Big-O: O(n)
+
+Displaying all resources requires visiting every resource stored in the
+vector. Therefore, displaying the resource inventory is O(n).
+
+
+Automatic Waiting-List Assignment
+Big-O: O(n)
+
+When a reservation is cancelled, the program searches the resource vector
+to find the associated resource. It then checks the front of the waiting
+list and inserts the next reservation into the reservation linked list.
+The resource search is O(n), making the overall worst-case operation
+O(n).
+
+
+Resource File Loading
+Big-O: O(n)
+
+The program reads each line of the resources file once and creates a
+Resource object for each valid line. If n is the number of resources,
+loading the file requires O(n) time.

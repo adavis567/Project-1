@@ -4,29 +4,50 @@
 #include <string>
 #include <iostream>
 
-struct WaitingNode {
-  std::string studentID;
-  std::string studentName;
-  std::string resourceID;
-  WaitingNode* next;
+using namespace std;
 
-  WaitingNode(const std::string& sid, const std::string& sname,
-              const std::string& rid)
-    : studentID(sid), studentName(sname), resourceID(rid), next(nullptr) {}
+struct WaitingNode {
+    int reservationID;
+    string studentID;
+    string studentName;
+    string resourceID;
+    string reservationDate;
+    WaitingNode* next;
+
+    WaitingNode(int rid, const string& sid, const string& sname,
+                const string& resource, const string& date)
+        : reservationID(rid),
+          studentID(sid),
+          studentName(sname),
+          resourceID(resource),
+          reservationDate(date),
+          next(nullptr) {}
 };
 
 class WaitingList {
-private: 
-  WaitingNode* front;
-  WaitingNode* rear;
+private:
+    WaitingNode* front;
+    WaitingNode* rear;
+
 public:
-  WaitingList();
-  bool isEmpty() const;
-  void enqueue(const std::string& studentID,
-              const std::string& studentName,
-              const std::string& resourceID);
-  void dequeue();
-  WaitingNode* peek() const;
-  void display() const;
+    WaitingList();
+    ~WaitingList();
+
+    bool isEmpty() const;
+
+    void enqueue(int reservationID,
+                 const string& studentID,
+                 const string& studentName,
+                 const string& resourceID,
+                 const string& reservationDate);
+
+    void dequeue();
+
+    WaitingNode* peek() const;
+
+    void display() const;
+
+    void clear();
 };
+
 #endif
