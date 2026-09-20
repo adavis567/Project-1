@@ -1,1 +1,38 @@
+Complexity Analysis
 
+Reservation Insertion
+Big-O: O(n)
+
+The reservation list uses a linked list. Before inserting a reservation,
+the program checks if the reservation already exists, which may require
+traversing the list. The program may also traverse to the end of the list
+before adding the new reservation. Because the list may need to be
+traversed, the worst-case complexity is O(n).
+
+
+Reservation Removal
+Big-O: O(n)
+
+To remove a reservation, the program may need to search through the linked
+list to find the matching reservation ID. In the worst case, the program
+may check every reservation before finding it. Removing the node itself
+is constant time once it is found, so the overall worst-case complexity is
+O(n).
+
+
+Waiting-List Processing
+Big-O: O(1) per enqueue/dequeue
+
+The waiting list uses a queue with front and rear pointers. Adding a
+student to the waiting list updates the rear pointer, and removing the
+next student updates the front pointer. Since no full-list traversal is
+needed for these operations, each enqueue or dequeue operation is O(1).
+
+
+Undo Cancellation
+Big-O: O(1) for the stack operation
+
+Cancellation history is stored in a stack, so the most recently cancelled
+reservation is always at the top. The program can retrieve and remove the
+top reservation directly without searching through the other cancelled
+reservations. Therefore, the stack undo operation is O(1).
