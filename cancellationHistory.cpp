@@ -18,4 +18,22 @@ bool CancellationHistory::undoCancellation(Reservation& reservation)
 
     return true;
 }
+void CancellationHistory::displayHistory() const
+{
+    if (cancellationStack.empty())
+{
+    cout << "Cancellation history is empty." << endl;
+    return;
+}
+stack<Reservation> temp = cancellationStack;
+
+while (!temp.empty())
+{
+    temp.top().display();
+    temp.pop();
+}
+bool CancellationHistory::isEmpty() const
+{
+    return cancellationStack.empty();
+}
 
