@@ -46,3 +46,16 @@ void WaitingList::display() const {
     curr = curr->next;
   }
 }
+int WaitingList::countByResource(const std::string& resourceID) const {
+    int count = 0;
+    WaitingNode* curr = front;
+
+    while (curr != nullptr) {
+        if (curr->resourceID == resourceID) {
+            count++;
+        }
+        curr = curr->next;
+    }
+
+    return count;
+}
