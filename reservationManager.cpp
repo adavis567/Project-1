@@ -143,7 +143,20 @@ bool ReservationManager::resourceIsReserved(string resourceID) const {
 
     return false;
 }
+int ReservationManager::countByResource(const string& resourceID) const {
+    int count = 0;
+    Node* current = head;
 
+    while (current != nullptr) {
+        if (current->reservation.getResourceID() == resourceID) {
+            count++;
+        }
+
+        current = current->next;
+    }
+
+    return count;
+}
 int ReservationManager::getReservationCount() const {
     return reservationCount;
 }
