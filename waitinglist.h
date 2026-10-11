@@ -46,7 +46,8 @@ public:
     WaitingNode* peek() const;
 
     void display() const;
-
+    
+    int countByResource(const string& resourceID) const;
     void clear();
 };
 
