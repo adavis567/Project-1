@@ -115,6 +115,7 @@ int main()
         cout << "9. Search" << endl;
         cout << "10. System Reporting" << endl;
         cout << "0. Exit" << endl;
+        cout << "Enter your choice: ";
 
         if (!(cin >> choice))
         {
