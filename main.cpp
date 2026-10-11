@@ -8,6 +8,7 @@
 #include "waitinglist.h"
 #include "cancellationHistory.h"
 #include "resource.h"
+#include "ResourceSorter.h"
 
 using namespace std;
 
@@ -107,6 +108,7 @@ int main()
         cout << "5. Display Waiting List" << endl;
         cout << "6. Display Cancellation History" << endl;
         cout << "7. Undo Cancellation" << endl;
+        cout << "8. Sort Resources" << endl;
         cout << "0. Exit" << endl;
         cout << "Enter your choice: ";
 
@@ -405,6 +407,20 @@ int main()
 
                 break;
             }
+
+            case 8:
+                {
+                    cout << "sort by: name / type / availability /id\n";
+                    string criteria;
+                    cin >> criteria;
+
+                    ResourceSorter::mergeSort(resources, criteria);
+
+                    cout << "\n===== Sorted Resources =====\n";
+                    for (const Resource& r : resources)
+                        r.display();
+                    break;
+                }
 
             case 0:
             {
