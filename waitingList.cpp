@@ -97,10 +97,13 @@ int WaitingList::countByResource(const string& resourceID) const
 
     while (current != nullptr)
     {
-        // Count this node if its resourceID matches resourceID.
+        if (current->resourceID == resourceID)
+        {
+            count++;
+        }
         current = current->next;
     }
-
+       
     return count;
 }
 void WaitingList::clear()
