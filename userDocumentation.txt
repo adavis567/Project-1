@@ -1,0 +1,106 @@
+Campus Resource Reservation System
+
+User Documentation
+
+1. Overview
+
+The Campus Resource Reservation System is a C++ application for managing campus resources and student reservations. Users can view resources, create and cancel reservations, manage waiting lists, search for records, sort resources, and view reports.
+
+2. Starting the Program
+
+Open a terminal in the project directory.
+
+Compile the program using:
+
+g++ *.cpp -o project
+
+Run the program using:
+
+./project
+
+The main menu displays the available operations. Enter the number of the operation you want to perform.
+
+3. Displaying Resources
+
+Select the resource display option to view the campus resources stored in the system.
+
+Each resource includes an ID, name, type, and availability status.
+
+4. Creating a Reservation
+
+Select the create reservation option.
+
+Enter the requested student and reservation information, including the student ID, student name, resource ID, and reservation date.
+
+The system checks whether the requested resource exists and is available.
+
+* If the resource is available, the reservation is created and the resource becomes unavailable.
+* If the resource is unavailable, the student can be added to the waiting list.
+
+5. Canceling a Reservation
+
+Select the cancellation option and provide the reservation information requested by the program.
+
+The reservation is removed from the active reservations and added to the cancellation history.
+
+When a resource becomes available, the system checks whether students are waiting for it. If someone is waiting, the first student in the queue is assigned the resource.
+
+6. Viewing Active Reservations
+
+Select the active reservations option to display the reservations currently maintained by the system.
+
+7. Viewing the Waiting List
+
+Select the waiting-list option to view students waiting for unavailable resources.
+
+Students are processed in first-in, first-out (FIFO) order.
+
+8. Viewing Cancellation History
+
+Select the cancellation-history option to view previously cancelled reservations.
+
+9. Undoing a Cancellation
+
+Select the undo cancellation option to attempt to restore the most recently cancelled reservation.
+
+The reservation is restored only when the resource is available, according to the system’s undo logic.
+
+10. Sorting Resources
+
+Select the sorting option and choose one of the sorting methods presented by the program.
+
+The resource inventory is organized according to the selected sorting criteria.
+
+11. Searching
+
+Select the search option to search for a resource or reservation by ID.
+
+Enter the requested ID. The program displays the matching record if it exists and indicates when a matching record cannot be found.
+
+12. Viewing Reports
+
+Select the reporting option to view the reports implemented in the program. These reports cover:
+
+* Active reservations
+* Resource utilization
+* Most requested resources
+* Waiting-list statistics
+
+13. Input Files
+
+The program uses the following data files:
+
+* resources.txt — Contains campus resource information.
+* reservations.txt — Used for reservation data if supported by the current implementation.
+
+Keep required input files in the directory from which the program expects to load them.
+
+14. Error Handling
+
+The program checks for invalid menu selections, invalid resource IDs, duplicate reservation IDs, unavailable resources, and operations involving empty waiting lists or cancellation history.
+
+If an operation cannot be completed, follow the message displayed by the program and provide valid input.
+
+15. Exiting
+
+Select 0 from the main menu to exit the program.
