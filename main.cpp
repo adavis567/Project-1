@@ -109,6 +109,7 @@ int main()
         cout << "6. Display Cancellation History" << endl;
         cout << "7. Undo Cancellation" << endl;
         cout << "8. Sort Resources" << endl;
+        cout << "9. Search" << endl;
         cout << "0. Exit" << endl;
         cout << "Enter your choice: ";
 
@@ -419,6 +420,86 @@ int main()
                     cout << "\n===== Sorted Resources =====\n";
                     for (const Resource& r : resources)
                         r.display();
+                    break;
+                }
+            case 9:
+                {
+                    int searchChoice;
+
+                    cout << "\n===== Search Menu =====" << endl;
+                    cout << "1. Search Resource by ID" << endl;
+                    cout << "2. Search Reservation by ID" << endl;
+                    cout << "0. Return to Main Menu" << endl;
+                    cout << "Enter your choice: ";
+
+                    if (!(cin >> searchChoice))
+                    {
+                        cin.clear();
+                        cin.ignore(10000, '\n');
+                        cout << "Invalid choice. Please enter a number." << endl;
+                        break;
+                    }
+
+                    if (searchChoice == 1)
+                    {
+                        string resourceID;
+                        bool found = false;
+
+                        cout << "Enter Resource ID: ";
+                        cin >> resourceID;
+
+                        for (const Resource& resource : resources)
+                        {
+                            if (resource.getID() == resourceID)
+                            {
+                                cout << "\nResource Found:" << endl;
+                                resource.display();
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if (!found)
+                        {
+                            cout << "Resource not found." << endl;
+                        }
+                    }
+                    else if (searchChoice == 2)
+                    {
+                        int reservationID;
+
+                        cout << "Enter Reservation ID: ";
+
+                        if (!(cin >> reservationID))
+                        {
+                            cin.clear();
+                            cin.ignore(10000, '\n');
+                            cout << "Invalid Reservation ID." << endl;
+                            break;
+                        }
+
+                        Reservation* reservation =
+                            reservationManager.findReservation(reservationID);
+
+                        if (reservation != nullptr)
+                        {
+                            cout << "\nReservation Found:" << endl;
+                            reservation->display();
+                        }
+                        else
+                        {
+                            cout << "Reservation not found." << endl;
+                        }
+                    }
+                    else if (searchChoice == 0)
+                    {
+                        cout << "Returning to main menu." << endl;
+                    }
+                    else
+                    {
+                        cout << "Invalid search choice." << endl;
+                    }
+
                     break;
                 }
 

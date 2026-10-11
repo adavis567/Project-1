@@ -2,7 +2,7 @@
 #define RESOURCESORTER_H
 
 #include <vector>
-#include "Resource.h"
+#include "resource.h"
 
 class ResourceSorter {
 public:
