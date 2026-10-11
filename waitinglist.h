@@ -28,5 +28,6 @@ public:
   void dequeue();
   WaitingNode* peek() const;
   void display() const;
+  int countByResource(const std::string& resourceID) const;
 };
 #endif
