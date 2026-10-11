@@ -32,6 +32,7 @@ public:
     bool reservationExists(int reservationID) const;
     bool studentHasReservation(int studentID) const;
     bool resourceIsReserved(string resourceID) const;
+    int countByResource(const string& resourceID) const;
 
     int getReservationCount() const;
     bool isEmpty() const;
