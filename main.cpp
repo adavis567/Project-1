@@ -7,7 +7,7 @@
 #include <utility>
 
 #include "reservationManager.h"
-#include "waitinglist.h"
+#include "waitinglist.h" 
 #include "cancellationHistory.h"
 #include "resource.h"
 #include "ResourceSorter.h"
