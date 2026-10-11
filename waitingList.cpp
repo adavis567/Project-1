@@ -90,7 +90,19 @@ void WaitingList::display() const
         current = current->next;
     }
 }
+int WaitingList::countByResource(const string& resourceID) const
+{
+    int count = 0;
+    WaitingNode* current = front;
 
+    while (current != nullptr)
+    {
+        // Count this node if its resourceID matches resourceID.
+        current = current->next;
+    }
+
+    return count;
+}
 void WaitingList::clear()
 {
     while (!isEmpty())
