@@ -1,97 +1,104 @@
-Complexity Analysis
+Campus Resource Reservation System
 
-Reservation Insertion
-Big-O: O(n)
+Algorithm Complexity Analysis
 
-The reservation list uses a linked list. Before inserting a reservation,
-the program checks if the reservation ID already exists, which may require
-traversing the list. The program then traverses to the end of the list
-before adding the new reservation. Therefore, the worst-case complexity
-is O(n).
+This document describes the time complexity of the main operations used in the Campus Resource Reservation System.
 
+1. Resource Searching
 
-Reservation Removal
-Big-O: O(n)
+Algorithm: Linear Search
 
-To remove a reservation, the program may need to search through the linked
-list to find the matching reservation ID. In the worst case, the program
-may check every reservation before finding it. Removing the node itself is
-O(1) once the node is found, so the overall worst-case complexity is O(n).
+Time Complexity: O(n)
 
+The program checks resources one at a time until it finds the requested resource ID or reaches the end of the resource collection.
 
-Reservation Search
-Big-O: O(n)
+In the worst case, every resource must be checked.
 
-The reservation linked list is searched from the head until a matching
-reservation ID is found. In the worst case, every reservation must be
-checked, resulting in O(n) time.
+2. Reservation Searching
 
+Data Structure: Linked List
 
-Waiting-List Enqueue
-Big-O: O(1)
+Time Complexity: O(n)
 
-The waiting list uses a linked queue with front and rear pointers. A new
-student is added directly to the rear of the queue without traversing the
-list. Therefore, enqueue is O(1).
+The program traverses the active reservation linked list to locate a reservation by ID. In the worst case, it must examine every node.
 
+3. Resource Sorting
 
-Waiting-List Dequeue
-Big-O: O(1)
+Algorithm: Merge Sort
 
-The next student is removed directly from the front of the queue. No
-traversal is required, so dequeue is O(1).
+Time Complexity: O(n log n)
 
+Merge Sort divides the resource collection into smaller sections, sorts those sections, and merges them into sorted order.
 
-Waiting-List Peek
-Big-O: O(1)
+The algorithm has O(n log n) time complexity in the best, average, and worst cases when implemented in its standard form.
 
-The front pointer directly identifies the first student in the waiting
-list. Therefore, retrieving the next waiting student is O(1).
+4. Reservation Insertion
 
+Data Structure: Linked List
 
-Cancellation History
-Big-O: O(1)
+Time Complexity: O(n) if the program traverses the list to find the insertion position; O(1) if insertion occurs directly at a known position, such as the head.
 
-Cancellation history uses a stack. Adding a cancellation places the
-reservation directly on top of the stack, so the push operation is O(1).
+The actual complexity depends on how the reservation manager inserts new nodes.
 
+5. Reservation Removal
 
-Undo Cancellation
-Big-O: O(1)
+Data Structure: Linked List
 
-The most recently cancelled reservation is stored at the top of the
-cancellation stack. Retrieving and removing it requires only one stack
-operation, so undo cancellation is O(1).
+Time Complexity: O(n)
 
+The program may need to traverse the linked list to locate the reservation that must be removed. Once the node and its predecessor are located, unlinking the node takes O(1) time.
 
-Resource Search
-Big-O: O(n)
+6. Waiting-List Insertion
 
-Resources are stored in a vector. When searching for a resource by its ID,
-the program may need to examine every resource. Therefore, the worst-case
-search complexity is O(n).
+Data Structure: Queue
 
+Time Complexity: O(1)
 
-Resource Display
-Big-O: O(n)
+A queue that maintains a rear pointer can add a new student to the end of the queue in constant time.
 
-Displaying all resources requires visiting every resource stored in the
-vector. Therefore, displaying the resource inventory is O(n).
+7. Waiting-List Removal
 
+Data Structure: Queue
 
-Automatic Waiting-List Assignment
-Big-O: O(n)
+Time Complexity: O(1)
 
-When a reservation is cancelled, the program searches the resource vector
-to find the associated resource. It then checks the front of the waiting
-list and inserts the next reservation into the reservation linked list.
-The resource search is O(n), making the overall worst-case operation
-O(n).
+Removing the student at the front of a linked queue takes constant time when the queue maintains a front pointer.
 
+8. Cancellation History Insertion
 
-Resource File Loading
-Big-O: O(n)
+Data Structure: Stack
 
-The program reads each line of the resources file once and creates a
-Resource object for each valid line. If n is the number of resources,
-loading the file requires O(n) time.
+Time Complexity: O(1)
+
+Adding a cancelled reservation to the top of a stack takes constant time.
+
+9. Undo Cancellation
+
+Data Structure: Stack
+
+Time Complexity: O(1) for removing the top stack entry. Restoring the reservation may require additional time if the program searches for a resource or checks other records.
+
+10. Resource Inventory Storage
+
+Data Structure: Vector
+
+Access by Index: O(1)
+
+Search by ID: O(n)
+
+A vector supports constant-time access by index. Finding a resource by ID requires a linear scan unless another search structure is used.
+
+Summary
+
+Operation	Algorithm or Data Structure	Time Complexity
+Resource search	Linear search	O(n)
+Reservation search	Linked list traversal	O(n)
+Resource sorting	Merge Sort	O(n log n)
+Reservation insertion	Linked list	Depends on insertion method
+Reservation removal	Linked list	O(n)
+Waiting-list insertion	Queue	O(1)
+Waiting-list removal	Queue	O(1)
+Cancellation history insertion	Stack	O(1)
+Undo cancellation	Stack operation	O(1) for stack removal; restoration may take longer
+Resource access by index	Vector	O(1)
+Resource search by ID	Vector scan	O(n)
