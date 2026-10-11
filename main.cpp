@@ -3,12 +3,15 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+#include <utility>
 
 #include "reservationManager.h"
 #include "waitinglist.h"
 #include "cancellationHistory.h"
 #include "resource.h"
 #include "ResourceSorter.h"
+
 
 using namespace std;
 
@@ -502,7 +505,146 @@ int main()
 
                     break;
                 }
+                        case 10:
+            {
+                int reportChoice;
 
+                cout << "\n===== System Reporting =====" << endl;
+                cout << "1. Active Reservations Report" << endl;
+                cout << "2. Resource Utilization Report" << endl;
+                cout << "3. Most Requested Resources" << endl;
+                cout << "4. Waiting-List Statistics" << endl;
+                cout << "0. Return to Main Menu" << endl;
+                cout << "Enter your choice: ";
+
+                if (!(cin >> reportChoice))
+                {
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cout << "Invalid report choice." << endl;
+                    break;
+                }
+
+                switch (reportChoice)
+                {
+                    case 1:
+                    {
+                        cout << "\n===== Active Reservations Report =====" << endl;
+
+                        reservationManager.displayReservations();
+
+                        cout << "Total active reservations: "
+                             << reservationManager.getReservationCount()
+                             << endl;
+                        break;
+                    }
+
+                    case 2:
+                    {
+                        cout << "\n===== Resource Utilization Report =====" << endl;
+
+                        if (resources.empty())
+                        {
+                            cout << "No resources available." << endl;
+                            break;
+                        }
+
+                        for (const Resource& resource : resources)
+                        {
+                            cout << "Resource ID: " << resource.getID()
+                                 << " | Active Reservations: "
+                                 << reservationManager.countByResource(resource.getID())
+                                 << endl;
+                        }
+
+                        break;
+                    }
+
+                    case 3:
+                    {
+                        cout << "\n===== Most Requested Resources =====" << endl;
+
+                        if (resources.empty())
+                        {
+                            cout << "No resources available." << endl;
+                            break;
+                        }
+
+                        vector<pair<string, int>> rankings;
+
+                        for (const Resource& resource : resources)
+                        {
+                            rankings.emplace_back(
+                                resource.getID(),
+                                reservationManager.countByResource(resource.getID())
+                            );
+                        }
+
+                        sort(
+                            rankings.begin(),
+                            rankings.end(),
+                            [](const pair<string, int>& a,
+                               const pair<string, int>& b)
+                            {
+                                if (a.second != b.second)
+                                {
+                                    return a.second > b.second;
+                                }
+
+                                return a.first < b.first;
+                            }
+                        );
+
+                        int rank = 1;
+
+                        for (const auto& item : rankings)
+                        {
+                            cout << rank << ". Resource ID: "
+                                 << item.first
+                                 << " | Active Reservations: "
+                                 << item.second << endl;
+                            rank++;
+                        }
+
+                        break;
+                    }
+
+                    case 4:
+                    {
+                        cout << "\n===== Waiting-List Statistics =====" << endl;
+
+                        if (resources.empty())
+                        {
+                            cout << "No resources available." << endl;
+                            break;
+                        }
+
+                        for (const Resource& resource : resources)
+                        {
+                            cout << "Resource ID: " << resource.getID()
+                                 << " | Students Waiting: "
+                                 << waitingList.countByResource(resource.getID())
+                                 << endl;
+                        }
+
+                        break;
+                    }
+
+                    case 0:
+                    {
+                        cout << "Returning to main menu." << endl;
+                        break;
+                    }
+
+                    default:
+                    {
+                        cout << "Invalid report choice." << endl;
+                        break;
+                    }
+                }
+
+                break;
+            }
             case 0:
             {
                 cout << "Exiting program..." << endl;
