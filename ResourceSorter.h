@@ -1,4 +1,4 @@
-#idndef RESOURCESORTER_H
+#ifndef RESOURCESORTER_H
 #define RESOURCESORTER_H
 
 #include <vector>
